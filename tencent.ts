@@ -3,17 +3,10 @@ import COS from "cos-nodejs-sdk-v5/index"
 
 export class TencentUploader {
     settings: PluginSettings;
-
-    lastToken: string;
-    tokenCreated: number;
-    tokenExpires: number;
     cos: COS;
 
     constructor(settings: PluginSettings) {
         this.settings = settings;
-        this.lastToken = "";
-        this.tokenCreated = Date.now();
-        this.tokenExpires = 7200;
         this.cos = new COS({
             SecretId: settings.secretID,
             SecretKey: settings.secretKey
@@ -30,7 +23,10 @@ export class TencentUploader {
                     Key: name,
                     Body: Buffer.from(content)
                 }
-            ).catch(err => {
+            ).then(data => {
+                resolve("success")
+            })
+            .catch(err => {
                 reject(err)
             })
         })
