@@ -2,33 +2,26 @@
 
 export default {
   // settings.ts
-  "Access Key": "Access key",
-  "Access Key Desc": "You can get key from key management from Qiniu personal center.",
-  "Access Key Input": "Enter your access key",
+  "Secret ID": "Secret ID",  
+  "Secret ID Desc": "You can get secret id from Tencent Cloud control panel.",
+  "Secret ID Input": "Enter your secret id",
 
-  "Access Secret Key": "Access secret key",
-  "Access Secret Key Desc": "You can get key from key management from Qiniu personal center.",
-  "Access Secret Key Input": "Enter your access secret key",
+  "Secret Key": "Secret Key",
+  "Secret Key Desc": "You can get secret key Tencent Cloud control panel.",
+  "Secret Key Input": "Enter your Secret Key",
 
   "Bucket Name": "Bucket name",
   "Bucket Name Desc": "Please indicate the bucket where you would like to upload the image.",
   "Bucket Name Input": "The specific bucket",
 
   "Domain": "Domain",
-  "Domain Desc": "Go to the Qiniu bucket settings to configure the external link domain name, and enter the domain here.",
+  "Domain Desc": "You can use Tencent Cloud’s default domain or your own",
   "Domain Input": "The external link domain name of above bucket",
 
   "Name Prefix": "Name prefix",
-  "Name Prefix Desc": "The uploaded filename's prefix in Qiniu, the uploaded filename will be: {{prefix}}{{timestamp}}.",
+  "Name Prefix Desc": "The uploaded filename's prefix in Tencent, the uploaded filename will be: {{prefix}}{{timestamp}}.",
   "Name Prefix Input": "The image's prefix",
 
   "Region": "Region",
   "Region Desc": "The region in which the bucket is located.",
-
-  "North China - Hebei": "North China - Hebei",
-  "East China - Zhejiang": "East China - Zhejiang",
-  "East China - Zhejiang 2": "East China - Zhejiang 2",
-  "South China - Guangdong": "South China - Guangdong",
-  "North America - Los Angeles": "North America - Los Angeles",
-  "Asia Pacific - Singapore (formerly Southeast Asia)": "Asia Pacific - Singapore (formerly Southeast Asia)",
 };

@@ -2,20 +2,20 @@
 
 export default {
   // settings.ts
-  "Access Key": "Access Key",
-  "Access Key Desc": "从七牛云/个人中心/密钥管理获取 Access Key",
-  "Access Key Input": "请输入 Access Key",
+  "Secret ID": "Secret ID",
+  "Secret ID Desc": "从腾讯云API密钥管理获取 Secret ID",
+  "Secret ID Input": "请输入 Secret ID",
 
-  "Access Secret Key": "Access Secret Key",
-  "Access Secret Key Desc": "从七牛云/个人中心/密钥管理获取Access Secret Key",
-  "Access Secret Key Input": "请输入 Access Secret Key",
+  "Secret Key": "Secret Key",
+  "Secret Key Desc": "从腾讯云API密钥管理获取 Secret Key",
+  "Secret Key Input": "请输入 Secret Key",
 
   "Bucket Name": "空间名称",
   "Bucket Name Desc": "指定你要上传到哪个存储空间",
   "Bucket Name Input": "指定的空间名称",
 
   "Domain": "外链域名",
-  "Domain Desc": "七牛云需要配置外链域名才能外部访问，在存储空间配置后，将配置域名输入在这里",
+  "Domain Desc": "自定义外链域名，不填则使用腾讯云默认域名",
   "Domain Input": "存储空间对应的外链域名",
 
   "Name Prefix": "文件名前缀",
@@ -24,11 +24,4 @@ export default {
 
   "Region": "区域",
   "Region Desc": "指明桶所在的区域",
-
-  "North China - Hebei": "华北-河北",
-  "East China - Zhejiang": "华东-浙江",
-  "East China - Zhejiang 2": "华东-浙江2",
-  "South China - Guangdong": "华南-广东",
-  "North America - Los Angeles": "北美-洛杉矶",
-  "Asia Pacific - Singapore (formerly Southeast Asia)": "亚太-新加坡(原东南亚)",
 };

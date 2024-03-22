@@ -37,8 +37,7 @@ export default class TencentImageUploader extends Plugin {
 
     private customDropEventListener = async (e: DragEvent) => {
         if (!this.uploader) {
-            // QiniuImageUploader.showUnconfiguredPluginNotice();
-			new Notice('hello world', 500)
+            TencentImageUploader.showUnconfiguredPluginNotice();
             return;
         }
         if (e.dataTransfer == null || e.dataTransfer.files.length === 0) {
@@ -68,9 +67,18 @@ export default class TencentImageUploader extends Plugin {
 
         const fileName = this.genImageName(uploadFile);
         await this.uploader!.uploadFile(fileName, uploadFile);
-
-        const imageUrl = `http://${this.settings.domain}/${fileName}`;
+        
+        let imageUrl = ""
+        if (this.settings.domain == "") {
+            // 腾讯云默认外链
+            imageUrl = `http://${this.settings.domain}.cos.${this.settings.region}.myqcloud.com/${fileName}`;
+        } else {
+            // 自定义域名外链
+            imageUrl = `http://${this.settings.bucketName}/${fileName}`;
+        }
+        // const imageUrl = `http://${this.settings.domain}.cos.${this.settings.region}.myqcloud.com/${fileName}`;
         const markDownImage = `![](${imageUrl})`
+        console.log(imageUrl)
         TencentImageUploader.replaceFirstOccurrence(editor, progressText, markDownImage)
     }
 

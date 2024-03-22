@@ -1,8 +1,7 @@
 import { PluginSettings } from "./settings";
-import { Uploader } from "./uploader/uploader";
 import COS from "cos-nodejs-sdk-v5/index"
 
-export class TencentUploader implements Uploader {
+export class TencentUploader {
     settings: PluginSettings;
 
     lastToken: string;
@@ -16,24 +15,14 @@ export class TencentUploader implements Uploader {
         this.tokenCreated = Date.now();
         this.tokenExpires = 7200;
         this.cos = new COS({
-            SecretId: settings.accessKey,
-            SecretKey: settings.accessSecretKey
+            SecretId: settings.secretID,
+            SecretKey: settings.secretKey
         })
     }
 
     public async uploadFile(name: string, file: File): Promise<string> {
-        console.log(file)
-        console.log(name)
         const content = await file.arrayBuffer();
-
         return new Promise((resolve, reject) => {
-            // this.cos.uploadFile(
-            //     {
-            //         FilePath: file.name,
-            //         Bucket: this.settings.bucketName,
-            //         Region: this.settings.region,
-            //         Key: name
-            //     }
             this.cos.putObject(
                 {
                     Bucket: this.settings.bucketName,
@@ -41,9 +30,7 @@ export class TencentUploader implements Uploader {
                     Key: name,
                     Body: Buffer.from(content)
                 }
-            ).then(data => {
-                resolve('success')
-            }).catch(err => {
+            ).catch(err => {
                 reject(err)
             })
         })

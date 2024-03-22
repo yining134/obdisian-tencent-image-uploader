@@ -1,10 +1,10 @@
-import { App, PluginSettingTab, Setting, Notice } from "obsidian";
-import QiniuImageUploader from "./main";
+import { App, PluginSettingTab, Setting } from "obsidian";
+import TencentImageUploader from "./main";
 import { t } from "./lang/helpers";
 
 export interface PluginSettings {
-    accessKey: string;
-    accessSecretKey: string;
+    secretID: string;
+    secretKey: string;
     bucketName: string;
     domain: string;
     namePrefix: string;
@@ -13,8 +13,8 @@ export interface PluginSettings {
 }
 
 export const DEFAULT_SETTINGS: PluginSettings = {
-    accessKey: "",
-    accessSecretKey: "",
+    secretID: "",
+    secretKey: "",
     bucketName: "",
     domain: "",
     namePrefix: "",
@@ -23,9 +23,9 @@ export const DEFAULT_SETTINGS: PluginSettings = {
 };
 
 export class SettingTab extends PluginSettingTab {
-    plugin: QiniuImageUploader;
+    plugin: TencentImageUploader;
 
-    constructor(app: App, plugin: QiniuImageUploader) {
+    constructor(app: App, plugin: TencentImageUploader) {
         super(app, plugin);
         this.plugin = plugin;
     }
@@ -36,24 +36,24 @@ export class SettingTab extends PluginSettingTab {
         containerEl.empty();
 
         new Setting(containerEl)
-            .setName(t("Access Key"))
-            .setDesc(t("Access Key Desc"))
+            .setName(t("Secret ID"))
+            .setDesc(t("Secret ID Desc"))
             .addText(text => text
-                .setPlaceholder(t("Access Key Input"))
-                .setValue(this.plugin.settings.accessKey)
+                .setPlaceholder(t("Secret ID Input"))
+                .setValue(this.plugin.settings.secretID)
                 .onChange(async (value) => {
-                    this.plugin.settings.accessKey = value;
+                    this.plugin.settings.secretID = value;
                     await this.plugin.saveSettings();
                 }));
 
         new Setting(containerEl)
-            .setName(t("Access Secret Key"))
-            .setDesc(t("Access Secret Key Desc"))
+            .setName(t("Secret Key"))
+            .setDesc(t("Secret Key Desc"))
             .addText(text => text
-                .setPlaceholder(t("Access Secret Key Input"))
-                .setValue(this.plugin.settings.accessSecretKey)
+                .setPlaceholder(t("Secret Key Input"))
+                .setValue(this.plugin.settings.secretKey)
                 .onChange(async (value) => {
-                    this.plugin.settings.accessSecretKey = value;
+                    this.plugin.settings.secretKey = value;
                     await this.plugin.saveSettings();
                 }));
 
