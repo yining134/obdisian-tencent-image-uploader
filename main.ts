@@ -71,12 +71,12 @@ export default class TencentImageUploader extends Plugin {
         let imageUrl = ""
         if (this.settings.domain == "") {
             // 腾讯云默认外链
-            imageUrl = `http://${this.settings.domain}.cos.${this.settings.region}.myqcloud.com/${fileName}`;
+            imageUrl = `http://${this.settings.bucketName}.cos.${this.settings.region}.myqcloud.com/${fileName}`;
         } else {
             // 自定义域名外链
-            imageUrl = `http://${this.settings.bucketName}/${fileName}`;
+            imageUrl = `http://${this.settings.domain}/${fileName}`;
         }
-        // const imageUrl = `http://${this.settings.domain}.cos.${this.settings.region}.myqcloud.com/${fileName}`;
+
         const markDownImage = `![](${imageUrl})`
         console.log(imageUrl)
         TencentImageUploader.replaceFirstOccurrence(editor, progressText, markDownImage)
